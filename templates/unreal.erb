@@ -35,7 +35,7 @@ case "$1" in
                 --user $USER -c $USER --pidfile "$PIDFILE" > /dev/null
           echo "."
         else
-          echo "ERROR: $NAME is alrunning on pid $PID..."
+          echo "ERROR: $NAME is already running on pid $PID..."
           exit 1
         fi
 
