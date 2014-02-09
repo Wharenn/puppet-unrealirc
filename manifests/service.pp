@@ -1,5 +1,9 @@
 class unrealirc::service {
 
+  Exec {
+    path => ['/bin', '/usr/bin', '/usr/local/bin', '/sbin', '/usr/sbin'],
+  }
+
   if $::osfamily == 'Debian' {
 
       file { '/etc/init.d/unreal':
