@@ -1,4 +1,8 @@
 class unrealirc::install {
+  
+  Exec {
+    path => ['/bin', '/usr/bin', '/usr/local/bin', '/sbin', '/usr/sbin'],
+  }
 
   $filename = 'unreal'
   $archive = "${filename}.tar.gz"
