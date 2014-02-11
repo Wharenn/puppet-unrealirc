@@ -17,6 +17,7 @@ class unrealirc::install {
   user { $user:
     ensure  => present,
     gid     => $group,
+    require => Group[$group],
   }
 
   # Retrieve and unpack unrealirc
@@ -49,6 +50,6 @@ class unrealirc::install {
 
   exec { 'chown-unrealirc-dir':
     command => "chown -R ${unrealirc::user}:${unrealirc::group} ${unrealirc::install_path}",
-    require => Exec['make-unrealirc'],
+    require => [ Group[$group], User[$user], Exec['make-unrealirc'] ],
   }
 }
