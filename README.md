@@ -1,6 +1,6 @@
 # UnrealIRC puppet module
 
-Current version : 0.0.1
+This is a fork of [Wharenn's unrealircd puppet module](https://github.com/Wharenn/puppet-unrealirc).
 
 This puppet module allows you to easily install an UnrealIRC IRC server.
 
@@ -10,7 +10,7 @@ You may be interested by the following modules :
 
 * Anope Puppet Module for IRC services management
 
-  https://github.com/Wharenn/puppet-anope
+  https://github.com/Tehnix/puppet-anope
 
 ## How to use
 
@@ -32,7 +32,11 @@ You may be interested by the following modules :
         maxservers 		=> 10,
         admins 			=> ['admin <admin@myserver.org>'],
         pidfile 		=> '/var/lib/unreal/ircd.pid',
-        url 			=> 'http://www.unrealircd.com/downloads/Unreal3.2.10.2.tar.gz'
+        url 			=> 'http://www.unrealircd.com/downloads/Unreal3.2.10.2.tar.gz',
+        use_ssl         => true,
+        ssl_cert        => '/absolute/path/to/server.cert.pem',
+        ssl_key         => '/absolute/path/to/server.key.pem',
+        motd            => '/absolute/path/to/motd',
     }
 
 #### Available options :
@@ -80,6 +84,23 @@ You may be interested by the following modules :
 **url**
 
   Url to the UnrealIRC download archive
+  
+**use_ssl**
+
+  Whether to compile unrealirc with ssl or not
+  
+**ssl_cert**
+
+  The location of the ssl certificate (only relevant with use_ssl)
+
+**ssl_key**
+
+   The location of the ssl key (only relevant with use_ssl)
+
+**motd**
+
+  The location of the motd file you want to use
+
 
 ### Required configuration
 
@@ -206,12 +227,8 @@ For IRC related questions, please have a look to UnrealIRC documentation :
 
 http://www.unrealircd.com/files/docs/unreal32docs.html
 
-Please report any module issue to project bug tracker on github :
-
-https://github.com/Wharenn/puppet-unrealirc/issues
-
-Contributions in form of pull requests are also welcomed! :-)
+Please report any module issue to project bug tracker on github
 
 ## Licence
 
-This module is distributed under the MIT licence. Please check the full licence included at the root of the project tree.
+This module is distributed under the MIT license. Please check the full license included at the root of the project tree.

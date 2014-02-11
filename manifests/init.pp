@@ -9,7 +9,11 @@ class unrealirc(
     $maxservers = 10,
     $admins = ['admin <admin@myserver.org>'],
     $pidfile = '/var/lib/unreal/ircd.pid',
-    $url = 'http://www.unrealircd.com/downloads/Unreal3.2.10.2.tar.gz'
+    $url = 'http://www.unrealircd.com/downloads/Unreal3.2.10.2.tar.gz',
+    $use_ssl = false,
+    $ssl_cert = undef,
+    $ssl_key = undef,
+    $motd = undef
 ) {
   class { '::unrealirc::install': } ->
   class { '::unrealirc::config': } ~>
